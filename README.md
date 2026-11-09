@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prashant Suthar — Portfolio
 
-## Getting Started
+A typographic, motion-led portfolio built with Next.js 16, React 19, Tailwind CSS v4, and anime.js. Server-rendered by default, with a small set of client components for interaction and animation.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm build   # production build
+pnpm lint    # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+All copy, projects, stack groups, timeline entries, and GitHub metadata live in [`src/data/site.ts`](src/data/site.ts). That file is the single source of truth for the page — update it first when personalising the site.
 
-To learn more about Next.js, take a look at the following resources:
+Project entries include the case-study copy used by the detail dialog:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `description` and `subtitle` — short and long summaries
+- `highlights` — what was built
+- `facts` — scope, format, and other at-a-glance details
+- `stack` and `tags` — tooling shown in the list and dialog
+- `links` — external project links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+| Path | Purpose |
+| --- | --- |
+| `src/app/page.tsx` | Page composition |
+| `src/app/layout.tsx` | Fonts, metadata, theme bootstrap, skip link |
+| `src/app/globals.css` | Design tokens, theme palettes, motion, utilities |
+| `src/components/` | Sections, UI primitives, and interaction components |
+| `src/data/site.ts` | Portfolio content |
+| `src/lib/use-theme.ts` | Shared theme store built on `useSyncExternalStore` |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design system
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Palette** — warm bone and ink, with a signal-orange accent defined in OKLCH for light and dark themes.
+- **Type** — Instrument Serif for display, Geist for body, Geist Mono for labels and metadata.
+- **Motion** — anime.js for entrance choreography, scroll reveals, and filter transitions. Every animation respects `prefers-reduced-motion`.
+- **Components** — shadcn/ui primitives (dialog, sheet, command, badge, tooltip, button) on Base UI.
+
+## Interaction
+
+- Keyboard command palette (`⌘K` / `Ctrl+K`)
+- Project filters and a case-study dialog
+- Theme toggle with no-flash bootstrap
+- Copy-to-clipboard email
+- Live local clock
+- Scroll progress and scroll-linked reveals
+
+## Notes
+
+The GitHub section reflects public profile data for `prashant-180206` — fifteen project repositories (plus the profile README). It is intentionally a snapshot rather than a live API integration; replace `site.github` and `githubRepos` in `src/data/site.ts` if the username or repository list changes.
+
+This is a prototype, not a published deployment. Add your own domain and social preview image before shipping.

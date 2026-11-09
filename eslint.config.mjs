@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party skill assets are not part of the app source.
+    ".agents/**",
   ]),
 ]);
 
