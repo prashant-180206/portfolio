@@ -1,12 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import {
   ArrowUpIcon,
   BriefcaseIcon,
+  Code2Icon,
   CopyIcon,
   LayersIcon,
   MailIcon,
+  MilestoneIcon,
   MoonIcon,
   SunIcon,
   UserIcon,
@@ -36,6 +39,12 @@ const navigation = [
   { label: "Work", href: "#work", icon: BriefcaseIcon, shortcut: "W" },
   { label: "About", href: "#about", icon: UserIcon, shortcut: "A" },
   { label: "Stack", href: "#stack", icon: LayersIcon, shortcut: "S" },
+  {
+    label: "Journey",
+    href: "#journey",
+    icon: MilestoneIcon,
+    shortcut: "J",
+  },
   { label: "GitHub", href: "#github", icon: GithubMark, shortcut: "G" },
   { label: "Contact", href: "#contact", icon: MailIcon, shortcut: "C" },
 ]
@@ -44,6 +53,9 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
   const [status, setStatus] = useState("")
   const { theme, mounted, toggleTheme } = useTheme()
   const isDark = mounted && theme === "dark"
+  const pathname = usePathname()
+  const router = useRouter()
+  const isHome = pathname === "/"
 
   function handleOpenChange(next: boolean) {
     if (next) setStatus("")
@@ -52,6 +64,17 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
 
   function goTo(href: string) {
     onOpenChange(false)
+
+    if (!isHome) {
+      if (href === "#top") {
+        router.push("/")
+      } else if (href === "#work") {
+        router.push("/work")
+      } else {
+        router.push(`/${href}`)
+      }
+      return
+    }
 
     window.requestAnimationFrame(() => {
       if (href === "#top") {
@@ -136,6 +159,13 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
             >
               <GithubMark className="size-4" />
               Open GitHub profile
+            </CommandItem>
+            <CommandItem
+              value="open leetcode profile external dsa practice"
+              onSelect={() => openExternal(site.leetcode.url)}
+            >
+              <Code2Icon className="size-4" />
+              Open LeetCode profile
             </CommandItem>
             <CommandItem
               value="back to top scroll"

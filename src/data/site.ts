@@ -21,17 +21,17 @@ export const site = {
   firstName: "Prashant",
   lastName: "Suthar",
   initials: "PS",
-  role: "Software engineer",
+  role: "Student developer",
   location: "India",
   timezone: "IST",
-  availability: "Open to select work",
+  availability: "Open to internships",
   email: "prashantsuthar.1802@gmail.com",
   description:
-    "I build full-stack products, cross-platform apps, and animation tools that make complex ideas easier to read.",
+    "I'm a computer science student building full-stack products, cross-platform apps, and animation tools that make complex ideas easier to read.",
   intro:
-    "Most of what I know came from building small systems end to end, then making them survive a second run. Lately I've been building a browser-first animation studio, an algorithm interpreter, and full-stack products — and learning to make the web move with the same care.",
+    "Most of what I know came from building small systems end to end, then making them survive a second run. Lately I've been building a browser-first animation studio, an algorithm interpreter, and full-stack products between classes — and learning to make the web move with the same care.",
   currently:
-    "Building manim-web and AlgoVis, shipping full-stack products, and looking for a team where product and engineering meet.",
+    "Balancing college with manim-web, AlgoVis, and full-stack side projects — and looking for an internship where product and engineering meet.",
   github: {
     username: "prashant-180206",
     url: githubUrl,
@@ -42,12 +42,17 @@ export const site = {
     lastPushShort: "NOV 26",
     since: "2024",
   },
+  leetcode: {
+    username: "prashant-180206",
+    url: "https://leetcode.com/u/prashant-180206/",
+  },
 }
 
 export const nav = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Stack", href: "#stack" },
+  { label: "Journey", href: "#journey" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -332,32 +337,86 @@ export const stackGroups = [
     blurb: "Engines, contracts, and the hardware layer.",
     items: ["C++", "Qt / QML", "Python", "Solidity", "Hardhat", "Linux"],
   },
+  {
+    id: "ai",
+    index: "04",
+    title: "AI",
+    blurb: "Tools I use to think, build, and review.",
+    items: [
+      "Agentic AI",
+      "OpenCode",
+      "Claude Code",
+      "ChatGPT",
+      "Ollama",
+      "Prompt engineering",
+    ],
+  },
 ]
 
-export const practice = [
+export type JourneyProject = { label: string; href: string }
+
+export type JourneyYear = {
+  year: string
+  meta: string
+  title: string
+  summary: string
+  projects: JourneyProject[]
+  learnings: string[]
+}
+
+export const journey: JourneyYear[] = [
   {
     year: "2026",
-    title: "Product engineering",
     meta: "Now",
-    text: "Shipping full-stack products — TrustLance, QuiLess, Shelfwise — and learning how far a small team can take an idea.",
-  },
-  {
-    year: "2026",
-    title: "Engines & interpreters",
-    meta: "Public",
-    text: "Built manim-web's 2D/3D animation engines and AlgoVis's TypeScript interpreter, then gave both an interface.",
+    title: "From features to products",
+    summary:
+      "The year I stopped building isolated screens and started thinking about users, state, permissions, deployment, and what happens after the demo.",
+    projects: [
+      { label: "manim-web", href: "/work/manim-web" },
+      { label: "TrustLance", href: "/work/trustlance" },
+      { label: "AlgoVis", href: "/work/algovis" },
+      { label: "QuiLess", href: "/work/quiless" },
+      { label: "Reflectra", href: "/work/reflectra" },
+      { label: "Shelfwise", href: "/work/shelfwise" },
+    ],
+    learnings: [
+      "How to model auth, roles, and real data instead of hard-coded fixtures.",
+      "How realtime and local-first constraints change the way an interface is designed.",
+      "How to move between TypeScript, Flutter, and C++ without losing the thread.",
+      "How much of product work happens before the first component is written.",
+    ],
   },
   {
     year: "2025",
-    title: "Systems & simulation",
-    meta: "Public",
-    text: "Started with a pygame traffic simulation, then moved into C++/Qt animation, Python voice authentication, and an academic ERP.",
+    meta: "Foundations",
+    title: "Systems, simulation, and shipping",
+    summary:
+      "A year of learning by making: traffic simulation, an academic ERP, a Qt animation framework, and a voice-authenticated hardware project.",
+    projects: [
+      { label: "trafficproject", href: `${githubUrl}/trafficproject` },
+      { label: "Acadify ERP", href: `${githubUrl}/Acadify-ERP` },
+      { label: "Animat", href: "/work/animat" },
+      { label: "LDAM Voice", href: "/work/ldam-voice" },
+    ],
+    learnings: [
+      "Python for simulation, scripting, and computer vision.",
+      "C++ and Qt architecture — and the cost of a good abstraction.",
+      "Working with audio, ML models, serial devices, and real hardware.",
+      "Reading documentation deeply enough to debug outside the happy path.",
+    ],
   },
   {
     year: "2024",
-    title: "Joined GitHub",
     meta: "Start",
-    text: "Created the account in December 2024. Fifteen public repositories later, the trail is still growing.",
+    title: "The first commit",
+    summary:
+      "Created the GitHub account in December 2024 and started publishing coursework, experiments, and small projects in public.",
+    projects: [],
+    learnings: [
+      "Git and the habit of committing work, even when it is unfinished.",
+      "How to read other people's code and ask better questions.",
+      "That consistency matters more than a perfect first attempt.",
+    ],
   },
 ]
 
@@ -425,20 +484,26 @@ export const marqueeItems = [
   "Cross-platform apps",
   "Animation engines",
   "Algorithm visualization",
+  "Agentic AI",
+  "OpenCode",
+  "Claude Code",
+  "ChatGPT",
   "TypeScript",
   "Next.js",
   "Flutter",
-  "Convex",
-  "Supabase",
   "C++ / Qt",
-  "Python",
-  "Motion",
 ]
 
 export const commands = [
   { label: "Go to work", href: "#work", group: "Navigate", shortcut: "W" },
   { label: "Go to about", href: "#about", group: "Navigate", shortcut: "A" },
   { label: "Go to stack", href: "#stack", group: "Navigate", shortcut: "S" },
+  {
+    label: "Go to journey",
+    href: "#journey",
+    group: "Navigate",
+    shortcut: "J",
+  },
   { label: "Go to GitHub", href: "#github", group: "Navigate", shortcut: "G" },
   { label: "Go to contact", href: "#contact", group: "Navigate", shortcut: "C" },
 ]

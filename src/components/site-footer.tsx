@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "lucide-react"
+import { ArrowUpIcon, Code2Icon } from "lucide-react"
 
 import { GithubMark } from "@/components/icons"
 import { LocalClock } from "@/components/local-clock"
@@ -31,8 +31,8 @@ export async function SiteFooter() {
               </span>
             </a>
             <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
-              {site.role} working between data and the people who need to read
-              it.
+              {site.role} building full-stack products, cross-platform apps,
+              and animation tools between classes.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export async function SiteFooter() {
             {nav.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={item.href === "#work" ? "/work" : `/${item.href}`}
                 className="link-underline w-fit py-1 text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}
@@ -57,6 +57,15 @@ export async function SiteFooter() {
             >
               <GithubMark className="size-3.5" />
               GitHub
+            </a>
+            <a
+              href={site.leetcode.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-2 py-1 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Code2Icon className="size-3.5" />
+              LeetCode
             </a>
             <a
               href={`mailto:${site.email}`}

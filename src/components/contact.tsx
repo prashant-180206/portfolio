@@ -53,10 +53,11 @@ export function Contact() {
 
         <Reveal delay={120}>
           <p className="mt-7 max-w-xl text-pretty text-sm leading-relaxed text-background/60 md:text-base">
-            I&apos;m looking for a team where product and engineering meet — a
-            place to build full-stack apps, cross-platform tools, and the
-            interfaces that explain them. If that&apos;s the kind of work you
-            have, I&apos;d like to hear about it.
+            I&apos;m a computer science student looking for an internship where
+            product and engineering meet — a place to build full-stack apps,
+            cross-platform tools, and the interfaces that explain them. If
+            that&apos;s the kind of team you have, I&apos;d like to hear about
+            it.
           </p>
         </Reveal>
 
@@ -124,6 +125,14 @@ export function Contact() {
                   className="link-underline transition-colors hover:text-signal"
                 >
                   GitHub
+                </a>
+                <a
+                  href={site.leetcode.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline transition-colors hover:text-signal"
+                >
+                  LeetCode
                 </a>
                 <a
                   href={`mailto:${site.email}`}

@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import {
   ArrowUpRightIcon,
+  Code2Icon,
   MailIcon,
   MenuIcon,
   SearchIcon,
@@ -26,16 +28,28 @@ import {
 import { nav, site } from "@/data/site"
 
 export function SiteHeader() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
   const [commandOpen, setCommandOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [active, setActive] = useState("#top")
   const [scrolled, setScrolled] = useState(false)
+
+  const sectionHref = (href: string) => {
+    if (isHome) return href
+    if (href === "#work") return "/work"
+    return `/${href}`
+  }
+  const topHref = isHome ? "#top" : "/#top"
+  const onWorkPage = pathname.startsWith("/work")
 
   useEffect(() => {
     const ids = ["top", ...nav.map((item) => item.href.slice(1))]
 
     const onScroll = () => {
       setScrolled(window.scrollY > 12)
+      if (!isHome) return
+
       const marker = window.scrollY + window.innerHeight * 0.35
       let current = "#top"
 
@@ -57,7 +71,7 @@ export function SiteHeader() {
       window.removeEventListener("scroll", onScroll)
       window.removeEventListener("resize", onScroll)
     }
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -84,7 +98,7 @@ export function SiteHeader() {
       >
         <div className="shell flex h-16 items-center justify-between gap-4">
           <a
-            href="#top"
+            href={topHref}
             className="group flex items-center gap-3"
             aria-label={`${site.name} — back to top`}
           >
@@ -100,11 +114,13 @@ export function SiteHeader() {
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
             {nav.map((item) => {
-              const isActive = active === item.href
+              const isActive = isHome
+                ? active === item.href
+                : onWorkPage && item.href === "#work"
               return (
                 <a
                   key={item.href}
-                  href={item.href}
+                  href={sectionHref(item.href)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
@@ -165,7 +181,7 @@ export function SiteHeader() {
                   {nav.map((item, index) => (
                     <a
                       key={item.href}
-                      href={item.href}
+                      href={sectionHref(item.href)}
                       onClick={() => setMobileOpen(false)}
                       className="group flex items-center gap-4 rounded-xl px-3 py-3 transition-colors hover:bg-muted"
                     >
@@ -196,6 +212,15 @@ export function SiteHeader() {
                   >
                     <GithubMark className="size-4" />
                     github.com/{site.github.username}
+                  </a>
+                  <a
+                    href={site.leetcode.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Code2Icon className="size-4" />
+                    leetcode.com/{site.leetcode.username}
                   </a>
                   <Button
                     variant="outline"

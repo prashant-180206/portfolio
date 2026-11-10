@@ -1,27 +1,18 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import { ArrowUpRightIcon } from "lucide-react"
 import { animate, stagger } from "animejs"
 import { cn } from "cn"
 
 import { SectionHeading } from "@/components/section-heading"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import { filters, projects, type Project } from "@/data/site"
+import { filters, projects } from "@/data/site"
 
 type Filter = (typeof filters)[number]
 
 export function Work() {
   const [filter, setFilter] = useState<Filter>("All")
-  const [selected, setSelected] = useState<Project | null>(null)
   const rowsRef = useRef<HTMLDivElement>(null)
 
   const visible =
@@ -89,11 +80,10 @@ export function Work() {
 
         <div ref={rowsRef} className="border-b border-border">
           {visible.map((project) => (
-            <button
+            <Link
               key={project.slug}
-              type="button"
+              href={`/work/${project.slug}`}
               data-project-row
-              onClick={() => setSelected(project)}
               className="group relative grid w-full grid-cols-[2rem_1fr_auto] items-center gap-4 border-b border-border py-6 text-left transition-colors duration-300 last:border-b-0 hover:bg-primary/40 hover:text-background md:grid-cols-[3rem_1.25fr_1fr_auto] md:gap-6 md:py-8"
             >
               <span className="label text-signal">{project.index}</span>
@@ -126,107 +116,10 @@ export function Work() {
                   <ArrowUpRightIcon className="size-4" />
                 </span>
               </span>
-            </button>
+            </Link>
           ))}
         </div>
       </div>
-
-      <Dialog
-        open={Boolean(selected)}
-        onOpenChange={(open) => {
-          if (!open) setSelected(null)
-        }}
-      >
-        <DialogContent className="max-h-[88svh] gap-0 overflow-y-auto p-0 sm:max-w-3xl">
-          {selected ? (
-            <>
-              <div className="border-b border-border bg-muted/40 p-6 md:p-8">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="label">
-                    Project {selected.index} / {selected.year}
-                  </p>
-                  <Badge variant="outline">{selected.group}</Badge>
-                </div>
-                <DialogHeader className="mt-6 gap-3">
-                  <DialogTitle className="display text-4xl md:text-6xl">
-                    {selected.name}
-                  </DialogTitle>
-                  <DialogDescription className="max-w-2xl text-sm leading-relaxed">
-                    {selected.subtitle}
-                  </DialogDescription>
-                </DialogHeader>
-              </div>
-
-              <div className="grid gap-8 p-6 md:grid-cols-[1.4fr_0.6fr] md:p-8">
-                <div>
-                  <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-                    {selected.description}
-                  </p>
-
-                  <h3 className="label mt-8">What I built</h3>
-                  <ul className="mt-4 flex flex-col gap-3">
-                    {selected.highlights.map((highlight) => (
-                      <li key={highlight} className="flex gap-3 text-sm leading-relaxed">
-                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-signal" />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-col gap-6">
-                  <div>
-                    <h3 className="label">Stack</h3>
-                    <div className="mt-3 flex flex-wrap gap-1.5">
-                      {selected.stack.map((item) => (
-                        <Badge key={item} variant="secondary">
-                          {item}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="label">At a glance</h3>
-                    <dl className="mt-3 divide-y divide-border border-y border-border text-sm">
-                      {selected.facts.map((fact) => (
-                        <div
-                          key={fact.label}
-                          className="flex justify-between gap-4 py-2.5"
-                        >
-                          <dt className="text-muted-foreground">{fact.label}</dt>
-                          <dd className="text-right font-medium">{fact.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-
-                  <div className="flex flex-col gap-2">
-                    {selected.links.map((link) => (
-                      <Button
-                        key={link.href}
-                        variant="outline"
-                        className="justify-between rounded-full"
-                        render={
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          />
-                        }
-                        nativeButton={false}
-                      >
-                        {link.label}
-                        <ArrowUpRightIcon />
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : null}
-        </DialogContent>
-      </Dialog>
     </section>
   )
 }

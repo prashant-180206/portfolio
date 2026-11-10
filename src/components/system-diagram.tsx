@@ -17,7 +17,7 @@ export function SystemDiagram() {
 
       <div className="relative px-3 pt-3 sm:px-5">
         <div
-          className="scan-line pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-signal to-transparent"
+          className="scan-line pointer-events-none absolute inset-x-5 top-0 h-px bg-linear-to-r from-transparent via-signal to-transparent"
           aria-hidden="true"
         />
         <svg

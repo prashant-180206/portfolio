@@ -7,9 +7,9 @@ import { site } from "@/data/site"
 
 const facts = [
   { label: "Based", value: `${site.location} · ${site.timezone}` },
-  { label: "Focus", value: "Web · Mobile · Systems" },
+  { label: "Focus", value: "Web · Mobile · AI" },
   { label: "On GitHub", value: `Since ${site.github.since}` },
-  { label: "Status", value: "Open to work" },
+  { label: "Status", value: "Open to internships" },
 ]
 
 export function About() {
@@ -36,11 +36,10 @@ export function About() {
             <Reveal delay={80}>
               <div className="mt-8 flex max-w-xl flex-col gap-5 text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
                 <p>
-                  I&apos;m {site.firstName}, a software engineer based in{" "}
-                  {site.location}. My work sits between the product and the
-                  systems underneath it: full-stack apps, cross-platform
-                  clients, animation engines, and tools that make a decision
-                  legible.
+                  I&apos;m {site.firstName}, a computer science student based in{" "}
+                  {site.location}. I learn by building: full-stack apps,
+                  cross-platform clients, animation engines, and tools that
+                  make a decision legible.
                 </p>
                 <p>{site.intro}</p>
                 <p>

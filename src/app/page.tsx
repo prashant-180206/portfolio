@@ -2,8 +2,8 @@ import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
 import { GithubSection } from "@/components/github-section"
 import { Hero } from "@/components/hero"
+import { Journey } from "@/components/journey"
 import { Marquee } from "@/components/marquee"
-import { Practice } from "@/components/practice"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { Stack } from "@/components/stack"
@@ -17,7 +17,7 @@ const personSchema = {
   jobTitle: site.role,
   email: `mailto:${site.email}`,
   url: site.github.url,
-  sameAs: [site.github.url],
+  sameAs: [site.github.url, site.leetcode.url],
   knowsAbout: [
     "Full-stack engineering",
     "TypeScript",
@@ -25,6 +25,8 @@ const personSchema = {
     "Flutter",
     "Animation engines",
     "Algorithm visualization",
+    "Agentic AI",
+    "AI-assisted development",
   ],
 }
 
@@ -43,7 +45,7 @@ export default function Home() {
         <About />
         <Stack />
         <GithubSection />
-        <Practice />
+        <Journey />
         <Contact />
       </main>
       <SiteFooter />

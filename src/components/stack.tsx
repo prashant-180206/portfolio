@@ -15,7 +15,7 @@ export function Stack() {
           description="A working set, not a wish list. Each one has earned a place in a project I've shipped."
         />
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 xl:grid-cols-4">
           {stackGroups.map((group, index) => (
             <Reveal
               key={group.id}
@@ -55,7 +55,7 @@ export function Stack() {
               Currently learning
             </p>
             <p className="text-sm text-muted-foreground">
-              Rust · 3D scenes · design engineering
+              Agentic workflows · Rust · 3D scenes
             </p>
           </div>
         </Reveal>

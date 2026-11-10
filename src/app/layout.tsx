@@ -23,11 +23,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Prashant Suthar — Software Engineer",
+    default: "Prashant Suthar — Student Developer",
     template: "%s — Prashant Suthar",
   },
   description:
-    "Prashant Suthar builds full-stack products, cross-platform apps, and animation tools that make complex ideas easier to read. Explore selected work, the stack, and the public trail on GitHub.",
+    "Prashant Suthar is a computer science student building full-stack products, cross-platform apps, and animation tools. Explore his projects, journey, and public GitHub trail.",
   applicationName: "Prashant Suthar — Portfolio",
   authors: [
     { name: "Prashant Suthar", url: "https://github.com/prashant-180206" },
@@ -35,15 +35,18 @@ export const metadata: Metadata = {
   creator: "Prashant Suthar",
   keywords: [
     "Prashant Suthar",
-    "software engineer",
-    "full-stack engineer",
+    "student developer",
+    "computer science student",
+    "full-stack developer",
     "TypeScript",
     "Next.js",
     "React",
     "Flutter",
-    "Supabase",
-    "Convex",
+    "Agentic AI",
+    "OpenCode",
+    "Claude Code",
     "animation",
+    "LeetCode",
     "portfolio",
   ],
   robots: {
@@ -54,15 +57,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Prashant Suthar",
-    title: "Prashant Suthar — Software Engineer",
+    title: "Prashant Suthar — Student Developer",
     description:
-      "Full-stack products, cross-platform apps, and animation tools that make complex ideas easier to read.",
+      "Full-stack products, cross-platform apps, and animation tools — built between classes.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prashant Suthar — Software Engineer",
+    title: "Prashant Suthar — Student Developer",
     description:
-      "Full-stack products, cross-platform apps, and animation tools that make complex ideas easier to read.",
+      "Full-stack products, cross-platform apps, and animation tools — built between classes.",
   },
   formatDetection: {
     email: false,
@@ -75,8 +78,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f1ea" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f6fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d1119" },
   ],
   colorScheme: "light dark",
 }
